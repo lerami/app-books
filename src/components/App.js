@@ -9,13 +9,13 @@ class App extends Component {
 
   // Code is invoked after the component is mounted/inserted into the DOM tree.
   componentDidMount() {
-    const url = 'http://localhost:8000';
+    const url = 'http://localhost:8000/books';
 
     fetch(url)
       .then(result => result.json())
       .then(result => {
         this.setState({
-          data: result,
+          books: result,
         })
       })
   }

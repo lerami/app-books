@@ -8,7 +8,11 @@ class Books extends Component {
     
         const rows = this.props.books.map((book) => {
             return (
-                <li key={book.id}>{book.title}</li> 
+            <li key={book.id}>
+                <img width='100px' src={book.image}></img>
+                {book.title}
+                <a>(see more)</a>
+            </li> 
             )
         });
 
