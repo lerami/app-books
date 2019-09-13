@@ -1,37 +1,19 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 import Books from './books/Books';
-import { tsPropertySignature } from '@babel/types';
+import BookDetail from './book-detail/BookDetail';
 
 class App extends Component {
-  state = {
-    books: [],
-  }
-
-  // Code is invoked after the component is mounted/inserted into the DOM tree.
-  componentDidMount() {
-    const url = 'http://localhost:8000/books';
-
-    fetch(url)
-      .then(result => result.json())
-      .then(result => {
-        this.setState({
-          books: result,
-        })
-      })
-  }
-
   render() {
-    const { books } = this.state;
-
+    console.log('render!!!!');
     return (
-      <div className="App">
-        <header className="App-header">
-          <p>
-            Welcome to Booking Online !
-          </p>
-          <Books books={books} />
-        </header>
-      </div>
+      <Router>
+        <Switch>
+          <Route path='/book-detail/:id' component={BookDetail} />
+          <Route path='/' component={Books} />
+        </Switch>
+      </Router>
     );
   }
 }
